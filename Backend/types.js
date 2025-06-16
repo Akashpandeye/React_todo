@@ -1,7 +1,7 @@
 const zod = require("zod")
 
 const createTodo = zod.object({
-    title: zod.string(),
+    title: zod.string().min(1, "This feild is required"),
     description: zod.string()
 });
 

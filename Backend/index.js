@@ -1,12 +1,14 @@
 const express = require('express');
-const {createTodo} = require(",/types");
+const {createTodo} = require("./types");
 const { updateTodo } = require('./types');
 const {todo} = require("./db");
+const cors = require("cors");
 
 
 const app = express();
 
-app.use(express.JSON());
+app.use(express.json());
+app.use(cors());
 
 // body{
 // title: string,
@@ -51,8 +53,9 @@ app.put("/completed", async function(req,res){
         })
         return ;
     }
-    await todo.update({
-        _id : req.body.id
+
+    await todo.update({      // take to args what and what change 
+        _id : req.body.id     // issko update karna hai 
     },{
         completed : true
     })
@@ -61,3 +64,4 @@ app.put("/completed", async function(req,res){
     })
 })
 
+app.listen(3000);
