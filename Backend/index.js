@@ -14,7 +14,7 @@ app.use(cors());
 // title: string,
 // description: string}
 
-app.post("/todo", async function(req,res){
+app.post("/todos", async function(req,res){
     const createPayload = req.body;
     const parsedPayload = createTodo.safeParse(createPayload);
     if (! parsedPayload.success){
